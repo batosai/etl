@@ -1,0 +1,60 @@
+{
+  "name": "@jrmc/etl",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Extract transform load for nodejs",
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/batosai/adonis-attachment.git"
+  },
+  "homepage": "https://adonis-attachment.jrmc.dev",
+  "author": "Jeremy Chaufourier jeremy@chaufourier.fr",
+  "license": "MIT",
+  "keywords": [
+    "etl",
+    "extract transform load"
+  ],
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "npm run clean && tsc",
+    "prepublishOnly": "npm run build",
+    "clean": "del-cli build",
+    "format": "prettier --write .",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "test": "node --loader ts-node/esm --enable-source-maps bin/test.ts"
+  },
+  "exports": {
+    ".": "./build/index.js",
+    "./types/*": "./build/src/types.js",
+    "./base_source": "./build/src/base_source.js",
+    "./base_transform": "./build/src/base_transform.js",
+    "./base_destination": "./build/src/base_destination.js"
+  },
+  "devDependencies": {
+    "@japa/assert": "^3.0.0",
+    "@japa/runner": "^3.1.4",
+    "@swc/core": "^1.7.26",
+    "@types/node": "^22.2.0",
+    "del-cli": "^5.1.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "vitepress": "^1.3.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "volta": {
+    "node": "20.18.0"
+  }
+}
