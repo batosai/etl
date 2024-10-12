@@ -5,8 +5,7 @@ import Destination from './src/base_destination.js'
 import { isLazyImport, isAsyncIterableIterator } from './src/utils.js'
 
 class Object implements Etl {
-
-  async run(attributes: EtlAttributes, single: boolean = false){
+  async run(attributes: EtlAttributes, single: boolean = false) {
     let results = []
 
     const { src, trans, dest } = await this.#construct(attributes)
@@ -39,7 +38,7 @@ class Object implements Etl {
     return { src, trans, dest }
   }
 
-  async #source(source: LazyImport | AsyncIterator ) {
+  async #source(source: LazyImport | AsyncIterator) {
     let fn
     if (isAsyncIterableIterator(source())) {
       fn = source as AsyncIterator
@@ -52,7 +51,7 @@ class Object implements Etl {
     return fn
   }
 
-  async #destination(destination: LazyImport | AsyncWithData ) {
+  async #destination(destination: LazyImport | AsyncWithData) {
     let fn
     if (await isLazyImport(destination)) {
       const { default: DestinationUnknown } = await (destination as LazyImport)()
@@ -65,7 +64,7 @@ class Object implements Etl {
     return fn
   }
 
-  async #transform(transform: LazyImport | AsyncWithData ) {
+  async #transform(transform: LazyImport | AsyncWithData) {
     let fn
     if (await isLazyImport(transform)) {
       const { default: TransformUnknown } = await (transform as LazyImport)()

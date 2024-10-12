@@ -3,7 +3,6 @@ import etl from '../service.js'
 
 test.group('Maths by lazy import', () => {
   test('with transform', async ({ assert }) => {
-
     const TestSource = () => import('./sample/test_source.js')
     const TestTransform = () => import('./sample/test_transform.js')
     const TestDestination = () => import('./sample/test_destination.js')
@@ -21,7 +20,6 @@ test.group('Maths by lazy import', () => {
   })
 
   test('without transform', async ({ assert }) => {
-
     const TestSource = () => import('./sample/test_source.js')
     const TestDestination = () => import('./sample/test_destination.js')
 
@@ -31,8 +29,8 @@ test.group('Maths by lazy import', () => {
     })
 
     assert.deepEqual(result, [
-      { lastname: "Doe", firstname: 'John', age: 30 },
-      { lastname: "Doe", firstname: 'Jane', age: 25 },
+      { lastname: 'Doe', firstname: 'John', age: 30 },
+      { lastname: 'Doe', firstname: 'Jane', age: 25 },
     ])
   })
 })

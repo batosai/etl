@@ -1,11 +1,11 @@
 export async function isLazyImport(fn: any): Promise<boolean> {
   if (typeof fn === 'function') {
-      try {
-          const result = await fn()
-          return result && typeof result === 'object' && 'default' in result
-      } catch {
-          return false
-      }
+    try {
+      const result = await fn()
+      return result && typeof result === 'object' && 'default' in result
+    } catch {
+      return false
+    }
   }
   return false
 }
