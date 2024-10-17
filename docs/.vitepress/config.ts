@@ -8,21 +8,38 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Guide',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'Usage', link: '/guide/usage' },
+          { text: 'Detail', link: '/guide/detail' },
         ]
-      }
+      },
+      {
+        text: 'Samples',
+        items: [
+          { text: 'DB to CSV', link: '/samples/getting-started' },
+          { text: 'xlsx to db', link: '/samples/usage' },
+        ]
+      },
+      {
+        text: 'ChangeLog',
+        link: '/changelog',
+      },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'x', link: 'https://x.com/chaufourier' },
+      { icon: 'discord', link: 'https://discord.gg/89eMn2vB' },
+      { icon: 'github', link: 'https://github.com/batosai/etl' },
+    ],
+
+    search: {
+      provider: 'local',
+    },
   }
 })
