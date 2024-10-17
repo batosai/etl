@@ -35,20 +35,20 @@
   "exports": {
     ".": "./build/index.js",
     "./types/*": "./build/src/types.js",
-    "./base_source": "./build/src/base_source.js",
-    "./base_transform": "./build/src/base_transform.js",
-    "./base_destination": "./build/src/base_destination.js"
+    "./source": "./build/src/base_source.js",
+    "./transform": "./build/src/base_transform.js",
+    "./destination": "./build/src/base_destination.js"
   },
   "devDependencies": {
     "@japa/assert": "^3.0.0",
     "@japa/runner": "^3.1.4",
     "@swc/core": "^1.7.26",
     "@types/node": "^22.2.0",
-    "del-cli": "^5.1.0",
+    "del-cli": "^6.0.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
-    "vitepress": "^1.3.3"
+    "vitepress": "^1.4.1"
   },
   "prettier": {
     "trailingComma": "es5",

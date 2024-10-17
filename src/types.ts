@@ -13,7 +13,7 @@ export type EtlAttributes = {
 }
 
 export interface Etl {
-  run(attributes: EtlAttributes, shouldReturn: boolean): any
+  run(attributes: EtlAttributes, single: boolean): any
 }
 
 export interface Source {

@@ -1,4 +1,4 @@
-import Source from '../../src/base_source.js'
+import { Source } from '../../index.js'
 
 export default class TestSource extends Source {
   async *each() {

@@ -1,4 +1,4 @@
-import Transform from '../../src/base_transform.js'
+import { Transform } from '../../index.js'
 
 type Person = {
   firstname: string

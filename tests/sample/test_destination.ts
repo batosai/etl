@@ -1,4 +1,4 @@
-import Destination from '../../src/base_destination.js'
+import { Destination } from '../../index.js'
 
 export default class TestDestination extends Destination {
   async write(rows: any) {
