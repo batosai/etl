@@ -1,7 +1,7 @@
-import type { Etl, EtlAttributes, LazyImport, AsyncIterator, AsyncWithData } from './src/types.js'
-import Source from './src/base_source.js'
-import Transform from './src/base_transform.js'
-import Destination from './src/base_destination.js'
+import type { Etl, EtlAttributes, SourceEtl, DestinationEtl, LazyImport, AsyncIterator, AsyncWithData } from './src/types.js'
+import BaseSource from './src/base_source.js'
+import BaseTransform from './src/base_transform.js'
+import BaseDestination from './src/base_destination.js'
 import { isLazyImport, isAsyncIterableIterator } from './src/utils.js'
 
 class Object implements Etl {
@@ -10,11 +10,11 @@ class Object implements Etl {
 
     const { src, trans, dest } = await this.#construct(attributes)
 
-    for await (let item of src()) {
+    for await (let item of src.each()) {
       if (trans) {
         item = await trans(item)
       }
-      results.push(await dest(item))
+      results.push(await dest.write(item))
     }
 
     if (single) {
@@ -38,27 +38,45 @@ class Object implements Etl {
     return { src, trans, dest }
   }
 
-  async #source(source: LazyImport | AsyncIterator) {
+  async #source(attr: SourceEtl) {
     let fn
+    let source = attr
+    let options = {}
+
+    if (Array.isArray(source)) {
+      source = (attr as [LazyImport, options: Object])[0]
+      options = (attr as [LazyImport, options: Object])[1]
+    }
+
     if (isAsyncIterableIterator(source())) {
-      fn = source as AsyncIterator
+      fn = {
+        each: source as AsyncIterator
+      }
     } else {
       const { default: SourceUnknown } = await (source as LazyImport)()
-      const src = new (SourceUnknown as typeof Source)()
-      fn = src.each
+      fn = new (SourceUnknown as typeof BaseSource)(options)
     }
 
     return fn
   }
 
-  async #destination(destination: LazyImport | AsyncWithData) {
+  async #destination(attr: DestinationEtl) {
     let fn
+    let destination = attr
+    let options = {}
+
+    if (Array.isArray(destination)) {
+      destination = (attr as [LazyImport, options: Object])[0]
+      options = (attr as [LazyImport, options: Object])[1]
+    }
+
     if (await isLazyImport(destination)) {
       const { default: DestinationUnknown } = await (destination as LazyImport)()
-      const dest = new (DestinationUnknown as typeof Destination)()
-      fn = dest.write
+      fn = new (DestinationUnknown as typeof BaseDestination)(options)
     } else {
-      fn = destination as AsyncWithData
+      fn = {
+        write: destination as AsyncWithData
+      }
     }
 
     return fn
@@ -68,7 +86,7 @@ class Object implements Etl {
     let fn
     if (await isLazyImport(transform)) {
       const { default: TransformUnknown } = await (transform as LazyImport)()
-      const trans = new (TransformUnknown as typeof Transform)()
+      const trans = new (TransformUnknown as typeof BaseTransform)()
       fn = trans.process
     } else {
       fn = transform as AsyncWithData

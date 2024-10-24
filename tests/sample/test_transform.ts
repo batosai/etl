@@ -1,4 +1,4 @@
-import { Transform } from '../../index.js'
+import { Transform } from '../../src/types.js'
 
 type Person = {
   firstname: string
@@ -6,7 +6,7 @@ type Person = {
   age: number
 }
 
-export default class TestTransform extends Transform {
+export default class TestTransform implements Transform {
   async process(row: Person) {
     return {
       name: `${row.firstname} ${row.lastname}`,

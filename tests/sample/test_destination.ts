@@ -1,6 +1,6 @@
-import { Destination } from '../../index.js'
+import { Destination } from '../../src/types.js'
 
-export default class TestDestination extends Destination {
+export default class TestDestination implements Destination {
   async write(rows: any) {
     return rows
   }

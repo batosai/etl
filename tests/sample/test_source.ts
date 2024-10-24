@@ -1,6 +1,6 @@
-import { Source } from '../../index.js'
+import { Source } from '../../src/types.js'
 
-export default class TestSource extends Source {
+export default class TestSource implements Source {
   async *each() {
     const dataArray = [
       { lastname: 'Doe', firstname: 'John', age: 30 },

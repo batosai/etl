@@ -33,4 +33,26 @@ test.group('Maths by lazy import', () => {
       { lastname: 'Doe', firstname: 'Jane', age: 25 },
     ])
   })
+
+  test('with options', async ({ assert }) => {
+    const TestSource = () => import('./sample/test_with_options_source.js')
+    const TestDestination = () => import('./sample/test_with_options_destination.js')
+
+    const result = await etl.run({
+      source: [TestSource, { 
+        data: [
+          { lastname: 'Doe', firstname: 'John', age: 30 },
+          { lastname: 'Doe', firstname: 'Jane', age: 25 },
+        ]
+      }],
+      destination: [TestDestination, { 
+        age: 22
+      }],
+    })
+
+    assert.deepEqual(result, [
+      { lastname: 'Doe', firstname: 'John', age: 22 },
+      { lastname: 'Doe', firstname: 'Jane', age: 22 },
+    ])
+  })
 })
