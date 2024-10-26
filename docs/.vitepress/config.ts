@@ -22,8 +22,8 @@ export default defineConfig({
       {
         text: 'Samples',
         items: [
-          { text: 'DB to CSV', link: '/samples/getting-started' },
-          { text: 'xlsx to db', link: '/samples/usage' },
+          { text: 'DB to CSV', link: '/samples/db-to-csv' },
+          { text: 'xlsx to db', link: '/samples/xlsx-to-db' },
         ]
       },
       {

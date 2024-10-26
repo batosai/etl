@@ -12,10 +12,18 @@ export interface Etl {
 ## Type
 
 ```ts
-type EtlAttributes = {
-  source: LazyImport | AsyncIterator
-  transform?: LazyImport | AsyncWithData
-  destination: LazyImport | AsyncWithData
+export type LazyImport = () => Promise<ImportConstructor>
+export type AsyncIterator = () => AsyncIterableIterator<any>
+export type AsyncWithData = (data: any) => Promise<any>
+
+export type SourceEtl = LazyImport | [LazyImport, options: Object] | AsyncIterator
+export type TransformEtl = LazyImport | AsyncWithData
+export type DestinationEtl = LazyImport | [LazyImport, options: Object] | AsyncWithData
+
+export type EtlAttributes = {
+  source: SourceEtl
+  transform?: TransformEtl
+  destination: DestinationEtl
 }
 ```
 

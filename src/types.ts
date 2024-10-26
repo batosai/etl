@@ -11,11 +11,9 @@ export type TransformEtl = LazyImport | AsyncWithData
 export type DestinationEtl = LazyImport | [LazyImport, options: Object] | AsyncWithData
 
 export type EtlAttributes = {
-  preProcess?: () => Promise<any>
   source: SourceEtl
   transform?: TransformEtl
   destination: DestinationEtl
-  postProcess?: () => Promise<any>
 }
 
 export interface Etl {
