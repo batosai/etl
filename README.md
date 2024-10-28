@@ -32,4 +32,4 @@ await etl.run({
 })
 ```
 
-view [Documentation](etl.jrmc.dev)
+view [Documentation](https://etl.jrmc.dev)
