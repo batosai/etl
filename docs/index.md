@@ -15,8 +15,10 @@ hero:
       link: https://github.com/batosai/etl
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Extract
+    details: This step involves collecting data from various sources, which may include databases, files (JSON, CSV, XLS, etc.), APIs, etc.
+  - title: Transform
+    details: The extracted data is often in different formats or does not meet the requirements of the target system. The transformation adjusts and formats the data to make it consistent and usable. This may include data type conversion, data cleaning (removing duplicates, correcting errors), data enrichment, and applying business rules.
+  - title: Load
+    details: After transformation, the data is sent to the destination, such as a database, file, API, etc. This step can be done incrementally (only adding new data) or by reloading the entire dataset.
 ---
