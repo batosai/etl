@@ -4,6 +4,16 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "ETL",
   description: "Extract-transform-load for nodejs",
+  head: [
+    [
+      'script',
+      {
+        'defer': '',
+        'src': 'https://umami.jrmc.dev/script.js',
+        'data-website-id': '5d9cb199-6f32-4645-8cb6-3afb0afa8aa0',
+      },
+    ],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
