@@ -9,9 +9,9 @@
   "main": "build/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/batosai/adonis-attachment.git"
+    "url": "https://github.com/batosai/etl.git"
   },
-  "homepage": "https://adonis-attachment.jrmc.dev",
+  "homepage": "https://etl.jrmc.dev",
   "author": "Jeremy Chaufourier jeremy@chaufourier.fr",
   "license": "MIT",
   "keywords": [
