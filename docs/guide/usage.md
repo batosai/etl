@@ -4,7 +4,7 @@
 
 ::: code-group
 
-```ts [main.js]
+```ts [main.ts]
 import etl from '@jrmc/etl'
 
 const UserSource = () => import('./user_array_source.js')
@@ -18,10 +18,10 @@ await etl.run({
 })
 ```
 
-```ts [user_array_source.js]
+```ts [user_array_source.ts]
 import { Source } from '@jrmc/etl/types'
 
-export default class UserArraySource extends Source {
+export default class UserArraySource implements Source {
   async *each() {
     const dataArray = [
       { lastname: 'Doe', firstname: 'John', age: 30 },
@@ -35,7 +35,7 @@ export default class UserArraySource extends Source {
 }
 ```
 
-```ts [user_array_to_db_transform.js]
+```ts [user_array_to_db_transform.ts]
 import { Transform } from '@jrmc/etl/types'
 
 type User = {
@@ -44,7 +44,7 @@ type User = {
   age: number
 }
 
-export default class UserArrayToDbTransform extends Transform {
+export default class UserArrayToDbTransform implements Transform {
   async process(row: User) {
     return {
       name: `${row.firstname} ${row.lastname}`,
@@ -54,10 +54,10 @@ export default class UserArrayToDbTransform extends Transform {
 }
 ```
 
-```ts [user_db_destination.js]
+```ts [user_db_destination.ts]
 import { Destination } from '@jrmc/etl/types'
 
-export default class UserDbDestination extends Destination {
+export default class UserDbDestination implements Destination {
   async write(row: any) {
     User.create(row)
   }
@@ -71,7 +71,7 @@ export default class UserDbDestination extends Destination {
 ::: code-group
 
 
-```ts [main.js]
+```ts [main.ts]
 import etl from '@jrmc/etl'
 
 const UserSource = () => import('./user_array_source.js')
@@ -90,7 +90,7 @@ await etl.run({
 })
 ```
 
-```ts [user_array_source.js]
+```ts [user_array_source.ts]
 import { Source } from '@jrmc/etl/types'
 
 type Options = Record<string, Array<Object>>
@@ -110,7 +110,7 @@ export default class TestWithOptionsSource implements Source {
 }
 ```
 
-```ts [user_db_destination.js]
+```ts [user_db_destination.ts]
 import { Destination } from '@jrmc/etl/types'
 
 type Options = {
@@ -174,7 +174,7 @@ await etl.run({
 
 ::: code-group
 
-```ts [main.js]
+```ts [main.ts]
 import etl from '@jrmc/etl'
 
 const UserSource = () => import('./user_array_source.js')
@@ -196,10 +196,10 @@ return :
 */
 ```
 
-```ts [user_array_source.js]
+```ts [user_array_source.ts]
 import { Source } from '@jrmc/etl/types'
 
-export default class UserArraySource extends Source {
+export default class UserArraySource implements Source {
   async *each() {
     const dataArray = [
       { lastname: 'Doe', firstname: 'John', age: 30 },
@@ -213,7 +213,7 @@ export default class UserArraySource extends Source {
 }
 ```
 
-```ts [user_array_to_db_transform.js]
+```ts [user_array_to_db_transform.ts]
 import { Transform } from '@jrmc/etl/types'
 
 type User = {
@@ -222,7 +222,7 @@ type User = {
   age: number
 }
 
-export default class UserArrayToDbTransform extends Transform {
+export default class UserArrayToDbTransform implements Transform {
   async process(row: User) {
     return {
       name: `${row.firstname} ${row.lastname}`,
@@ -232,10 +232,10 @@ export default class UserArrayToDbTransform extends Transform {
 }
 ```
 
-```ts [user_db_destination.js]
+```ts [user_db_destination.ts]
 import { Destination } from '@jrmc/etl/types'
 
-export default class UserDbDestination extends Destination {
+export default class UserDbDestination implements Destination {
   async write(row: any) {
     return row
   }
