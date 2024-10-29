@@ -1,6 +1,6 @@
 {
   "name": "@jrmc/etl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Extract transform load for nodejs",
   "engines": {
@@ -34,12 +34,13 @@
   },
   "exports": {
     ".": "./build/index.js",
-    "./types/*": "./build/src/types.js",
+    "./types": "./build/src/types.js",
     "./source": "./build/src/base_source.js",
     "./transform": "./build/src/base_transform.js",
     "./destination": "./build/src/base_destination.js"
   },
   "devDependencies": {
+    "@adonisjs/tsconfig": "^1.4.0",
     "@japa/assert": "^3.0.0",
     "@japa/runner": "^3.1.4",
     "@swc/core": "^1.7.26",
