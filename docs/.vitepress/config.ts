@@ -37,6 +37,12 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Adapters',
+        items: [
+          { text: 'AdonisJS', link: '/adonisjs' },
+        ],
+      },
+      {
         text: 'ChangeLog',
         link: '/changelog',
       },
