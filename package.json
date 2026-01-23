@@ -41,14 +41,14 @@
   },
   "devDependencies": {
     "@adonisjs/tsconfig": "^1.4.1",
-    "@japa/assert": "^4.1.1",
-    "@japa/runner": "^4.4.0",
-    "@swc/core": "^1.13.20",
-    "@types/node": "^24.5.2",
+    "@japa/assert": "^4.2.0",
+    "@japa/runner": "^4.5.0",
+    "@swc/core": "^1.15.10",
+    "@types/node": "^25.0.10",
     "del-cli": "^7.0.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "vitepress": "^1.6.4"
   },
   "prettier": {
@@ -66,6 +66,6 @@
     "tag": "latest"
   },
   "volta": {
-    "node": "20.18.0"
+    "node": "24.13.0"
   }
 }
