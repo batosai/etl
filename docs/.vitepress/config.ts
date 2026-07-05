@@ -43,6 +43,12 @@ export default defineConfig({
         ],
       },
       {
+        text: 'AI',
+        items: [
+          { text: 'Agent Skill', link: '/skills' },
+        ],
+      },
+      {
         text: 'ChangeLog',
         link: '/changelog',
       },
