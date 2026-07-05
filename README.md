@@ -20,6 +20,14 @@ This step can be done incrementally (only adding new data) or by reloading the e
 npm install @jrmc/etl
 ```
 
+## Agent Skill
+
+An [agent skill](https://etl.jrmc.dev/skills) is available for AI coding agents (Claude Code, Cursor, Codex, etc.):
+
+```sh
+npx skills add batosai/etl
+```
+
 ## Run
 
 ```ts
