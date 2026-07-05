@@ -1,6 +1,6 @@
 {
   "name": "@jrmc/etl",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Extract transform load for nodejs",
   "engines": {
